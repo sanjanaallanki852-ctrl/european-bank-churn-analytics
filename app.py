@@ -53,7 +53,7 @@ st.markdown("""
 # ── Data & model loaders ───────────────────────────────────────────────────────
 @st.cache_data
 def load_data():
-    df = pd.read_csv("/home/claude/project/data/processed_bank_data.csv")
+    df = pd.read_csv("processed_bank_data.csv")
     cat_cols = ["AgeGroup", "CreditBand", "TenureGroup", "BalanceSegment", "SegmentLabel",
                 "ChurnLabel", "ActiveLabel", "CrCardLabel"]
     for c in cat_cols:
@@ -63,9 +63,9 @@ def load_data():
 
 @st.cache_resource
 def load_models():
-    rf  = joblib.load("/home/claude/project/models/random_forest_model.joblib")
-    xgb = joblib.load("/home/claude/project/models/xgboost_model.joblib")
-    feat = joblib.load("/home/claude/project/models/feature_columns.joblib")
+    rf  = joblib.load("/home/project/models/random_forest_model.joblib")
+    xgb = joblib.load("/home/project/models/xgboost_model.joblib")
+    feat = joblib.load("/home/project/models/feature_columns.joblib")
     return rf, xgb, feat
 
 def apply_filters(df, geo, gender, age_group, bal_seg):
